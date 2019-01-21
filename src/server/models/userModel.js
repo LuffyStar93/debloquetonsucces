@@ -59,5 +59,9 @@ module.exports = function(connection) {
       console.log("last db query =>", query.sql);
   };
 
-  return { create, get, getAll, getByMail, remove };
+  const update = function updateUser(clbk, id){
+    const sql = `UPDATE user SET email = ?, pseudo = ?, password = ?, age = ?, gamertag = ?, psn = ?, steamid = ?   WHERE id = ?`
+  };
+
+  return { create, get, getAll, getByMail, remove, update };
 };

@@ -23,6 +23,12 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Jeux.vue')
     },
     {
+    path: '/jeux/:id/achievement',
+    name: 'achievements',
+    props: true,
+    component: () => import(/* webpackChunkName: "about" */ './views/JeuxDetail.vue')
+    },
+    {
       path: '/faq',
       name: 'FAQ',
       // route level code-splitting

@@ -165,8 +165,28 @@ app.get("/external_api/games", (req, res) => {
         }
      })
 
+});
+
+app.post("/external_api/achievement", (req, res) => {
+
+    axios.get("https://api.achievementstats.com/games/" + req.body.idjeux + "/achievements"+ "/?key=1085bed860429488376615821")
+
+    .then(function(response) {
+        console.log(res.data);
+        res.send(response.data);
+    })
+    .catch(function(error){
+        console.log("err", error);
+    });
 
 });
+
+// app.get("/external_api/mygames", (req, res) => {
+
+//     axios.get("https://api.achievementstats.com/profiles/" + user.steamid + "/achievements"+ "/?key=1085bed860429488376615821")
+
+// });
+
 console.log("node server running @ http://localhost:" + port);
 
 app.listen(port);

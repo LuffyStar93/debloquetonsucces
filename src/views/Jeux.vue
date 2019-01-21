@@ -13,12 +13,15 @@
         </tr>
       </thead>
       <tbody>
-      <tr v-for="(stats, i) in orderBy(stat, 'name')" :key="i">
+        <router-link tag="tr" v-for="(stats, i) in orderBy(stat, 'name')" :key="i"  :to="{ path: `/jeux/${stats.appId}/achievement`, name: 'achievements', params: { id: stats.appId, name: stats.name } }">
+        
         <td><img :src="'https://www.achievementstats.com/' + stats.logo" alt=""></td>
         <td>{{ stats.name}}</td>
         <td>{{ stats.numOfAchievements}}</td>
         <td>{{ stats.numOfDlcs}}</td>
-      </tr>
+        
+        </router-link> 
+
       </tbody>
 
     </table>
