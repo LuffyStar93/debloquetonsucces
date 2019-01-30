@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const db = require("./db.config.js");
-const api = require("./apis")(db, ["user", "product"]);
+const api = require("./apis")(db, ["user", "guide"]);
 const cors = require("cors");
 var fs = require('fs');
 
@@ -181,11 +181,30 @@ app.post("/external_api/achievement", (req, res) => {
 
 });
 
-// app.get("/external_api/mygames", (req, res) => {
+ app.post("/external_api/mygamesid", (req, res) => {
 
-//     axios.get("https://api.achievementstats.com/profiles/" + user.steamid + "/achievements"+ "/?key=1085bed860429488376615821")
+    axios.get("https://api.achievementstats.com/profiles/" + req.body.steamid + "/games"+ "/?key=1085bed860429488376615821")
 
-// });
+    .then(function(response) {
+        console.log(res.data);
+        res.send(response.data);
+    })
+    .catch(function(error){
+        console.log("err", error);
+    });
+ });
+ app.post("/external_api/mygames", (req, res) => {
+
+    axios.get("https://api.achievementstats.com/game/" + req.body.games + "/?key=1085bed860429488376615821")
+
+    .then(function(response) {
+        console.log(res.data);
+        res.send(response.data);
+    })
+    .catch(function(error){
+        console.log("err", error);
+    });
+ });
 
 console.log("node server running @ http://localhost:" + port);
 

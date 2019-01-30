@@ -11,6 +11,7 @@
     "dev": "npm run script & npm run serve"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^1.1.2",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
@@ -21,7 +22,9 @@
     "jsonwebtoken": "^8.4.0",
     "mysql": "^2.16.0",
     "vue": "^2.5.17",
+    "vue-easy-tinymce": "^1.0.2",
     "vue-router": "^3.0.1",
+    "vue-tinymce-editor": "^1.6.2",
     "vue2-filters": "^0.4.1",
     "vuex": "^3.0.1"
   },

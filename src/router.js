@@ -29,6 +29,12 @@ export default new Router({
     component: () => import(/* webpackChunkName: "about" */ './views/JeuxDetail.vue')
     },
     {
+    path: '/jeux/:id/achievement/createguide',
+    name: 'createguide',
+    props: true,
+    component: () => import(/* webpackChunkName: "about" */ './views/CreateGuide.vue')
+    },
+    {
       path: '/faq',
       name: 'FAQ',
       // route level code-splitting
@@ -67,12 +73,6 @@ export default new Router({
           path: "moi",
           component: () =>
             import(/* webpackChunkName: "dashboard-me" */ "./views/DashboardMe.vue")
-        },
-        {
-          name: "mes-jeux",
-          path: "mes-jeux",
-          component: () =>
-            import(/* webpackChunkName: "dashboard-users" */ "./views/DashboardMyGames.vue")
         },
         {
           name: "guides-fav",

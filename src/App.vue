@@ -11,11 +11,15 @@
 <script>
 import headerMain from "@/components/Content/header.vue";
 import footerMain from "@/components/Content/footer.vue";
+import auth from "@/utils/auth.js";
+
 export default {
-  components: {
+
+   components: {
     headerMain,
     footerMain
   }
+ 
 }
 </script>
 

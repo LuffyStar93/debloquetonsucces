@@ -9,11 +9,8 @@
 
        <router-link class="clickable item" to="/user/moi">Infos</router-link>
 
-       <router-link class="clickable item" to="/user/mes-jeux">Mes Jeux</router-link>
-
         <router-link class="clickable item" to="/user/guides-favoris">Guides favoris</router-link>
-
-        <p class="clickable" to="/login" @click="logout">Déconnexion</p>
+        <p class="clickable" @click="logout">Déconnexion</p>
       </div>      
     </nav>
 
@@ -25,11 +22,18 @@
 <script>
 import auth from "@/utils/auth.js"
 export default {
+  data(){
+    return{
+      logged: true
+    }
+  },
   methods: {
     logout() {
+      
       auth.logUserOut(this);
     }
-  }
+  },
+  
 };
 </script>
 

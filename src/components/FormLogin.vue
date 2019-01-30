@@ -42,8 +42,8 @@ export default {
           "8 caractère minimum dont au moins 1 majuscule, 1 nombre et 1 caractère spécial"
       },
       user: {
-        email: "guillaume@owlab.io",
-        password: "123Soleil"
+        email: "luffy-star-93@hotmail.fr",
+        password: "onepiece93"
       }
     };
   },
@@ -79,7 +79,7 @@ export default {
 
       const errors = tests.reduce(runTestsSuite, 0);
 
-      console.log("@checkLogin", errors, this.logs);
+      //console.log("@checkLogin", errors, this.logs);
 
       return errors === 0;
     },
@@ -90,6 +90,7 @@ export default {
           .dispatch("user/login", this.user)
           .then(res => {
             this.$router.push({ path: `/user/moi` });
+            this.$ebus.$emit("logged")
           })
           .catch(err => {
             console.error(err);

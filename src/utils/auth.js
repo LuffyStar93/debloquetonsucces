@@ -1,4 +1,4 @@
-const tokenName = "authToken";
+const tokenName = "user";
 const loginPath = "/login";
 
 /**

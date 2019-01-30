@@ -53,7 +53,7 @@ export default {
     },
     created(){
     this.user = JSON.parse(window.localStorage.getItem('user'))
-    console.log(this.user);
+    //console.log(this.user);
   }
 }
 </script>

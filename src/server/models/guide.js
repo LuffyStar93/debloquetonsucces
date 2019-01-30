@@ -1,11 +1,10 @@
 const guideModel = function guideModel(connection) {
 
   const create = function createGuide(clbk, data) {
-    const q = "INSERT INTO guide (user_id) VALUES (?)";
-    const payload = [data.user_id];
-
-    connection.query(q, payload, (err, res, cols) => {
-      // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
+    const q = "INSERT INTO guide (id_user, id_jeux, id_succesApi, contenus) VALUES (?, ?, ?, ?)";
+    const payload = [data.id_user, data.id_jeux, data.id_succesApi, data.contenus];
+    connection.query(q, payload, (err, res) => {
+       //console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
       if (err) return clbk(err, null);
       return clbk(null, res);
     });
@@ -32,20 +31,31 @@ const guideModel = function guideModel(connection) {
     });
   };
 
-  const get = function getUser(clbk) {
-    let sql = "SELECT * FROM guide";
-     connection.query(sql, (error, results, fields) => {
-      // return console.log(this.sql);
-      if (error) return clbk(error, null);
-      return clbk(null, results);
+  const getAll = function getGuides(clbk) {
+    const sql = `SELECT * FROM guide`;
+    
+    const q = connection.query(sql, (err, guides) => {
+      if (err) return clbk(err, null);
+      return clbk(null, guides);
     });
+    console.log(q.sql);
+  };
+
+  const get = function getGuide(clbk, id) {
+    const sql = `SELECT * FROM guide WHERE id = ?`;
+    const q = connection.query(sql, id, (err, guide) => {
+      if (err) return clbk(err, null);
+      return clbk(null, guide);
+    });
+    console.log(q.sql);
   };
 
   return {
     create,
     remove,
     update,
-    get
+    get,
+    getAll
   };
 };
 

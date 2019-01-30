@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>JEUX</h1>
+    <h1>Liste des jeux</h1>
     <!-- <p>{{ stat }}</p> -->
 
     <table>
@@ -82,11 +82,10 @@ thead, th{
 tbody tr:hover{
   &:hover{
     box-shadow: #3f3f3f -1px 1px, #3f3f3f -2px 2px, #3f3f3f -3px 3px, #3f3f3f -4px 4px, #3f3f3f -5px 5px, #3f3f3f -6px 6px;
-  transform: translate3d(6px, -6px, 0);
-    transition-delay: 0s;
-	  transition-duration: 0.4s;
-	  transition-property: all;
-  transition-timing-function: line;
+    transform: translate3d(6px, -6px, 0);
+    transition-duration: 0.4s;
+    
+    
   }
 }
 

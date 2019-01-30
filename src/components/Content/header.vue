@@ -7,11 +7,33 @@
       <router-link class="lien" to="/faq">FAQ</router-link>
       </nav>
      <div id="login">
-         <router-link to="/login">Connexion</router-link>
-         <router-link to="/inscription">S'enregistrer</router-link>
+         <router-link v-if="!auth.isLoggedIn()" to="/login">Connexion</router-link>
+         <router-link v-if="!auth.isLoggedIn()" to="/inscription">S'enregistrer</router-link>
+         <router-link v-if=" auth.isLoggedIn()" to="/user/moi">Mon Compte</router-link>
      </div>
     </header>
 </template>
+
+<script>
+import libAuth from "@/utils/auth.js" 
+
+export default {
+    data(){
+        return{
+         auth: libAuth
+        }
+    },
+    watch: {
+        "$route": function(to, from) {
+            this.$forceUpdate();
+           
+            this.logged = false;
+        }
+    }
+    
+}
+</script>
+
 
 <style lang="scss" scoped>
 
