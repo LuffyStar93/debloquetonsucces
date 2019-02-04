@@ -5,7 +5,7 @@
         <router-link class="link" :to="{ path: `/jeux/${this.$route.params.id}/achievement/createguide`, name: 'createguide', params: { achievement } }">Créer guide</router-link>
         <div id="box">
             
-          <p id="game_name">{{ this.$route.params.name }}</p>
+          <!-- <p id="game_name">{{ game_id }}</p> -->
            
            <!-- <p>{{ achievement }}</p> -->
               
@@ -19,14 +19,15 @@
         </tr>
       </thead>
       <tbody>
-      <tr v-for="(achievements, i) in achievement" :key="i">
+        <router-link tag="tr" v-for="(achievements, i) in achievement" :key="i"  :to="{ path: `/jeux/${game_id}/achievement/${achievements.apiName}`, name: 'achievements-guide', params: { achievements_id: achievements.apiName,  name: achievements.name, icon: achievements.iconUnlocked, description: achievements.description } }">
          <td><img :src="'https://www.achievementstats.com/' + achievements.iconUnlocked" alt=""></td>
         <td>{{ achievements.name}}</td>
         <td>{{ achievements.description}}</td>
         <td v-if="achievements.apiName"><i id="check" class="fas fa-check"></i></td>
         <td v-else=""><i id="cross" class="fas fa-times"></i></td>
+      </router-link>
+    
       
-      </tr>
      
 
       </tbody>
@@ -45,18 +46,13 @@ import axios from "axios";
 export default {
   data(){
     return{
+      game_id: "",
       stat : "",
       achievement: {name: "notloadedyet"}
       
     }
     },
-//   props: {
-//   title: String,
-//   likes: Number,
-//   isPublished: Boolean,
-//   commentIds: Array,
-//   author: Object
-// },
+
   created(){
     var self = this;
     axios.post(`http://localhost:9999/external_api/achievement`,{
@@ -66,7 +62,8 @@ export default {
     .then(function(response) {
       //console.log(response)
       self.achievement = response.data
-    })
+    }),
+    self.game_id = this.$route.params.id;
   }
 }
 </script>
@@ -80,7 +77,7 @@ export default {
 }
 
 table{
-  width: 80%;
+  width: 90%;
    margin: auto;
    background: black;
 }
@@ -145,6 +142,7 @@ td:nth-child(1), td:nth-child(2){
   justify-content: center;
   text-decoration: none;
   color: #0d3b57;
+  font-size: 20px;
 
 }
 

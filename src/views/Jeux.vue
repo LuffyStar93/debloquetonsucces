@@ -63,7 +63,7 @@ export default {
 <style lang="scss" scoped>
 
 table{
-  width: 80%;
+  width: 90%;
    margin: auto;
    background: black;
 }

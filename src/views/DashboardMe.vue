@@ -2,35 +2,35 @@
     <div id="content">
         <h1 class="title">Mes infos</h1>
 
-        <form action="">
+        <form id="infos" action="">
         <table id="table">
             <tr>
-                <td>Pseudo </td>
+                <td>Pseudo : </td>
                 <td> <input type="text" :value="user.pseudo"></td>
             </tr>
 
             <tr>
-                <td>Email</td>
+                <td>Email :</td>
                 <td> <input type="text" :value="user.email"></td>
             </tr>
 
             <tr>
-                <td>Age</td>
+                <td>Age :</td>
                 <td> <input type="number" :value="user.age"></td>  
             </tr>
 
             <tr>
-                <td>Gamertag</td>
+                <td>Gamertag :</td>
                 <td> <input type="text" :value="user.gamertag"></td>
             </tr>
 
             <tr>
-                <td>PSN</td>
+                <td>PSN :</td>
                 <td> <input type="text" :value="user.psn"></td>
             </tr>
 
             <tr>
-                <td>SteamID</td>
+                <td>SteamID :</td>
                 <td> <input type="text" :value="user.steamid"></td>
             </tr>
             <td colspan="2">
@@ -62,9 +62,17 @@ export default {
     #content{
         display: flex;
         justify-content: center;
-
+    
     }
 
+    #infos{
+        border: 4px solid #0d3b57;
+        background: rgba(#00668d, 1) ;
+        border-radius: 10px;
+        width: 80%;
+        margin: auto;
+        color: white;
+    }
     #table{
         margin: auto;
 

@@ -1,8 +1,8 @@
 const guideModel = function guideModel(connection) {
 
   const create = function createGuide(clbk, data) {
-    const q = "INSERT INTO guide (id_user, id_jeux, id_succesApi, contenus) VALUES (?, ?, ?, ?)";
-    const payload = [data.id_user, data.id_jeux, data.id_succesApi, data.contenus];
+    const q = "INSERT INTO guide (id_user, id_jeux, id_succesName, contenus) VALUES (?, ?, ?, ?)";
+    const payload = [data.id_user, data.id_jeux, data.id_succesName, data.contenus];
     connection.query(q, payload, (err, res) => {
        //console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
       if (err) return clbk(err, null);
@@ -21,7 +21,7 @@ const guideModel = function guideModel(connection) {
     });
   };
 
-  const update = function editGuide(clbk, user) {
+  const update = function editGuide(clbk, guide) {
     const q = "UPDATE guide SET user_id = ? WHERE id = ?";
     const payload = [guide.user_id, guide.id];
     connection.query(q, payload, function (err, res, fields) {

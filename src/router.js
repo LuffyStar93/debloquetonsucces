@@ -29,6 +29,12 @@ export default new Router({
     component: () => import(/* webpackChunkName: "about" */ './views/JeuxDetail.vue')
     },
     {
+      path: '/jeux/:id/achievement/:achievements_id',
+      name: 'achievements-guide',
+      props: true,
+      component: () => import(/* webpackChunkName: "about" */ './views/AchievementGuide.vue')
+      },
+    {
     path: '/jeux/:id/achievement/createguide',
     name: 'createguide',
     props: true,

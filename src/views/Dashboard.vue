@@ -1,6 +1,6 @@
 <template>
   <section id="dashboard" class="page dashboard">
-    <h1 id="title" class="title">Mon Compte</h1>
+    <h1 id="title" class="title">{{this.user.pseudo}}</h1>
   <div class="dashboard_content">
     
     <nav id="nav_dashboard" class="nav">
@@ -24,7 +24,8 @@ import auth from "@/utils/auth.js"
 export default {
   data(){
     return{
-      logged: true
+      logged: true,
+      user:""
     }
   },
   methods: {
@@ -33,6 +34,9 @@ export default {
       auth.logUserOut(this);
     }
   },
+  created(){
+     this.user = JSON.parse(window.localStorage.getItem('user'))
+  }
   
 };
 </script>
